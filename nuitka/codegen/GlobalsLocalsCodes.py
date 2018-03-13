@@ -58,13 +58,9 @@ def generateBuiltinLocalsCode(to_name, expression, emit, context):
         if locals_owner.isExpressionOutlineBody():
             locals_owner = locals_owner.getParentVariableProvider()
 
-        all_variables = tuple(
-            locals_owner.getVariables()
-        )
-
         return sorted(
             variables,
-            key = lambda variable_desc: all_variables.index(variable_desc[0]),
+            key = lambda variable_desc: variable_desc[0].getName(),
         )
 
     # Optimization will have made this "globals", and it wouldn't be
